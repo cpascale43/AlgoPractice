@@ -7,6 +7,11 @@
 //   palindrome("abba") === true
 //   palindrome("abcdefg") === false
 
-function palindrome(str) {}
+// reverse() is an array method not a string method
+
+function palindrome(str) {
+  let strReverse = str.split('').reverse().join('')
+  return strReverse === str;
+}
 
 module.exports = palindrome;
