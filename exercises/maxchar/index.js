@@ -30,11 +30,7 @@
 function maxChar(str) {
   let obj = {}
   str.split('').forEach(char => {
-    if (!obj[char]) {
-      obj[char] = 1;
-    } else {
-      obj[char]++;
-    }
+    obj[char] = obj[char] + 1 || 1
   })
 
   const highest = Math.max(...Object.values(obj))
