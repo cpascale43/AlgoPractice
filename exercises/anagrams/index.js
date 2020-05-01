@@ -8,6 +8,44 @@
 //   anagrams('RAIL! SAFETY!', 'fairy tales') --> True
 //   anagrams('Hi there', 'Bye there') --> False
 
-function anagrams(stringA, stringB) {}
+// regex word.replace(/[^\w]/g, "").toLowerCase()
+// remove extraneous characters and lowercase
+// character maps
+// compare all the letters and quantities inside both
+// compare the keys that exist inside both
+// ('hello', 'hellos') needs to be false
+
+// build helper function to build character map
+// replace and to lowercase
+// check if each number of keys is identical in length
+
+// function buildMap(str) {
+//   const charMap = {}
+//   for (let char of str.replace(/[^\w]/g, "").toLowerCase()) {
+//     charMap[char] = charMap[char] + 1 || 1
+//   }
+//   return charMap
+// }
+
+// function anagrams(stringA, stringB) {
+//   if (stringA.length !== stringB.length) return false;
+
+//   let mapA = buildMap(stringA)
+//   let mapB = buildMap(stringB)
+
+//   return Object.keys(mapA).length === Object.keys(mapB).length
+// }
+
+
+// build helper to remove extraneous characters, lowercase and sort
+// compare strings using comparison operator
+
+function cleanStr(str) {
+  return str.replace(/[^w]/g, '').toLowerCase().split('').sort().join('')
+}
+
+function anagrams(stringA, stringB) {
+  return cleanStr(stringA) === cleanStr(stringB)
+}
 
 module.exports = anagrams;
