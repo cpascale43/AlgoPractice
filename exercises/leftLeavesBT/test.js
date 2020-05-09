@@ -17,7 +17,7 @@ const deserialize = function(data) {
 
       if (data[i] !== null) {
           var left = new TreeNode(parseInt(data[i]));
-          parent.left  = left;
+          parent.left = left;
           queue.push(left);
       }
       if (data[++i] !== null && i !== data.length) {
@@ -34,7 +34,7 @@ test('sumOfLeftLeaves exists', () => {
   expect(sumOfLeftLeaves).toBeDefined()
 });
 
-test('sumOfLeftLeaves handles empty arrays', () => {
+test('sumOfLeftLeaves handles empty BTs', () => {
   expect(sumOfLeftLeaves([])).toEqual(0)
 });
 

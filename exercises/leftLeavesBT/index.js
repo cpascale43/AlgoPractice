@@ -13,9 +13,9 @@
 // There are two left leaves in the binary tree, with values 9 and 15 respectively. Return 24.
 
 function isLeaf(node) {
-  if (node == null) {
+  if (!node) {
     return false;
-  } else if (node.left.left == null && node.left.right == null) {
+  } else if (!node.left.left && !node.left.right) {
     return true;
   }
   return false;
@@ -27,21 +27,20 @@ function sumOfLeftLeaves(root) {
   let queue = [root];
 
   while (queue.length) {
-    for (let i = 0; i < queue.length; i++) {
-      let node = queue.shift();
+    let node = queue.shift();
 
-      if (node.left !== null) {
-        if (isLeaf(node)) {
-          sum += node.left.val;
-        }
-        queue.push(node.left);
+    if (node.left) {
+      if (isLeaf(node)) {
+        sum += node.left.val;
       }
+      queue.push(node.left);
+    }
 
-      if (node.right !== null) {
-        queue.push(node.right);
-      }
+    if (node.right) {
+      queue.push(node.right);
     }
   }
+
   return sum;
 }
 
