@@ -59,20 +59,47 @@ class LinkedList {
 
   removeLast() {
     if (!this.head) return;
+    // if the list has length 1
     if (!this.head.next) {
       this.head = null;
       return;
     }
 
+    // two pointers
     let previous = this.head;
     let node = this.head.next;
+
+    // if the node's next value is null,
+    while (node.next) {
+      previous = node;
+      node = node.next;
+    }
+
+    // set previous' value to null
+    // "deleting" the current node
+    previous.next = null;
+  }
+
+  insertLast(x) {
+    let newNode = new Node(x)
+    if (!this.head) {
+      this.head = newNode;
+      return;
+    }
+    if (!this.head.next) {
+      this.head.next = newNode;
+      return;
+    }
+
+    let previous = this.head;
+    let node = this.head.next
 
     while (node.next) {
       previous = node;
       node = node.next;
     }
 
-    previous.next = null;
+    previous.next = newNode;
   }
 
 
