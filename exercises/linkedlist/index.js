@@ -2,6 +2,8 @@
 // Implement classes Node and Linked Lists
 // See 'directions' document
 
+// can simplify by only writing insertAt, removeAt, and getAt
+
 class Node {
   constructor(data, next = null) {
     this.data = data;
@@ -15,9 +17,10 @@ class LinkedList {
   }
 
   insertFirst(x) {
-    let node = new Node(x, this.head);
+    // let node = new Node(x, this.head);
 
-    this.head = node;
+    // this.head = node;
+    return this.insertAt(x, 0)
   }
 
   size() {
@@ -31,20 +34,22 @@ class LinkedList {
   }
 
   getFirst() {
-    let first = this.head;
-    return first;
+    // let first = this.head;
+    // return first;
+    return this.getAt(0)
   }
 
   getLast() {
-    if (!this.head) return;
-    let start = this.head;
+    // if (!this.head) return;
+    // let start = this.head;
 
-    while (start) {
-      if (!start.next) {
-        return start;
-      }
-      start = start.next;
-    }
+    // while (start) {
+    //   if (!start.next) {
+    //     return start;
+    //   }
+    //   start = start.next;
+    // }
+    return this.getAt(this.size() - 1)
   }
 
   clear() {
@@ -52,13 +57,14 @@ class LinkedList {
   }
 
   removeFirst() {
-    let second = this.head.next;
+    // let second = this.head.next;
 
-    this.head = second;
+    // this.head = second;
+    return this.removeAt(0)
   }
 
   removeLast() {
-    if (!this.head) return;
+    /*if (!this.head) return;
     // if the list has length 1
     if (!this.head.next) {
       this.head = null;
@@ -78,6 +84,8 @@ class LinkedList {
     // set previous' value to null
     // "deleting" the current node
     previous.next = null;
+    */
+   return this.removeAt(this.size() - 1)
   }
 
   insertLast(x) {
@@ -88,6 +96,7 @@ class LinkedList {
     } else {
       this.insertFirst(x);
     }
+    // return this.insertAt(x, this.size() - 1)
   }
 
   getAt(idx) {
@@ -138,6 +147,24 @@ class LinkedList {
 
     previous = this.getAt(idx - 1);
     previous.next = new Node(data, previous.next);
+  }
+
+  forEach(func) {
+    let node = this.head
+
+    while (node) {
+      func(node)
+      node = node.next;
+    }
+  }
+
+  // generator - can work with a for...of loop w/ list
+  *[Symbol.iterator]() {
+    let node = this.head;
+    while (node) {
+      yield node;
+      node = node.next
+    }
   }
 }
 
