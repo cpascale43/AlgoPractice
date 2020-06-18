@@ -110,11 +110,34 @@ class LinkedList {
       return null;
     }
     if (idx === 0) {
-      this.head = this.getAt(idx + 1)
+      this.head = this.getAt(idx + 1);
       return;
     }
     previous = this.getAt(idx - 1);
     previous.next = this.getAt(idx + 1);
+  }
+
+  insertAt(data, idx) {
+    let previous;
+
+    if (!this.head) {
+      this.head = new Node(data);
+      return null;
+    }
+
+    if (idx === 0) {
+      this.head = new Node(data, this.head);
+      return;
+    }
+
+    if (idx > this.size()) {
+      previous = this.getAt(this.size() - 1)
+      previous.next = new Node(data, previous.next)
+      return;
+    }
+
+    previous = this.getAt(idx - 1);
+    previous.next = new Node(data, previous.next);
   }
 }
 
