@@ -75,22 +75,65 @@ class LinkedList {
   }
 
   insertLast(x) {
+    const last = this.getLast();
+
+    if (last) {
+      // there are some existing nodes in our chain
+      last.next = new Node(x);
+    } else {
+      // the chain is empty
+      this.head = new Node(x);
+    }
+  }
+
+  getAt(idx) {
     if (!this.head) {
-      this.head = new Node(x)
-    }
-    if (!this.head.next) {
-      this.head.next = new Node(x)
+      return null;
     }
 
-    let previous = this.head;
-    let node = this.head.next;
+    let count = 0;
+    let node = this.head;
 
-    while (node.next) {
-      previous = node;
+    while (node) {
+      if (count === idx) {
+        return node;
+      }
+      count++;
       node = node.next;
     }
+    return null;
+  }
 
-    previous.next = new Node(x)
+  removeAt(idx) {
+    if (!this.head) {
+      return;
+    }
+
+    if (idx === 0) {
+      this.head = this.head.next;
+      return;
+    }
+
+    let previous = this.getAt(idx - 1);
+    if (!previous || !previous.next) {
+      return;
+    }
+    previous.next = previous.next.next;
+  }
+
+  insertAt(data, idx) {
+    if (!this.head) {
+      this.head = new Node(data);
+      return;
+    }
+
+    if (idx === 0) {
+      this.head = new Node(data, this.head);
+      return;
+    }
+
+    let previous = this.getAt(idx - 1) || this.getLast();
+    previous.next = new Node(data, previous.next);
   }
 }
 
