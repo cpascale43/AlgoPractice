@@ -17,8 +17,9 @@ class LinkedList {
   }
 
   insertFirst(data) {
-    let node = new Node(data, this.head);
-    this.head = node;
+    // let node = new Node(data, this.head);
+    // this.head = node;
+    this.insertAt(data, 0)
   }
 
   size() {
