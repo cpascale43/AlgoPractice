@@ -272,7 +272,7 @@ describe('InsertAt', () => {
   });
 });
 
-describe('ForEach', () => {
+xdescribe('ForEach', () => {
   test('applies a transform to each node', () => {
     const l = new List();
 
@@ -292,7 +292,7 @@ describe('ForEach', () => {
   });
 });
 
-describe('for...of loops', () => {
+xdescribe('for...of loops', () => {
   test('works with the linked list', () => {
     const l = new List();
 
