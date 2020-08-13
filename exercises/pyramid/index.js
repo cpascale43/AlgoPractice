@@ -18,20 +18,20 @@
 // Math.floor()
 
 function pyramid(n) {
-  let mid = Math.floor((2 * n-1) / 2);
+  let mid = Math.floor((2 * n - 1) / 2);
 
   for (let row = 0; row < n; row++) {
-    let steps = ''
+    let steps = "";
 
-    for (let col = 0; col < 2 * n-1; col++) {
+    for (let col = 0; col < 2 * n - 1; col++) {
       if (mid - row <= col && mid + row >= col) {
-        steps += '#'
+        steps += "#";
       } else {
-        steps += ' '
+        steps += " ";
       }
     }
 
-    console.log(steps)
+    console.log(steps);
   }
 }
 
